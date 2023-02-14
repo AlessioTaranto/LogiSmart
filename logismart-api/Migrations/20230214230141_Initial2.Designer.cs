@@ -11,8 +11,8 @@ using logismart_api.Context;
 
 namespace logismartapi.Migrations
 {
-    [DbContext(typeof(MagazzinoContext))]
-    [Migration("20230214215623_Initial2")]
+    [DbContext(typeof(MagazziniContext))]
+    [Migration("20230214230141_Initial2")]
     partial class Initial2
     {
         /// <inheritdoc />
@@ -25,6 +25,42 @@ namespace logismartapi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("logismart_api.Models.AreaMagazzino", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Attivo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Descrizione")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("MagazzinoId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeroContatto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MagazzinoId");
+
+                    b.ToTable("AreeMagazzino");
+                });
+
             modelBuilder.Entity("logismart_api.Models.Azienda", b =>
                 {
                     b.Property<long>("Id")
@@ -33,6 +69,9 @@ namespace logismartapi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
+                    b.Property<bool>("Attivo")
+                        .HasColumnType("bit");
+
                     b.Property<string>("CodiceUnivoco")
                         .HasMaxLength(7)
                         .HasColumnType("nvarchar(7)");
@@ -40,6 +79,9 @@ namespace logismartapi.Migrations
                     b.Property<string>("Indirizzo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("MagazzinoId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Mail")
                         .IsRequired()
@@ -63,7 +105,38 @@ namespace logismartapi.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MagazzinoId");
+
                     b.ToTable("Aziende");
+                });
+
+            modelBuilder.Entity("logismart_api.Models.Magazzino", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Indirizzo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeroTelefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Magazzini");
                 });
 
             modelBuilder.Entity("logismart_api.Models.Operatore", b =>
@@ -73,6 +146,9 @@ namespace logismartapi.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Attivo")
+                        .HasColumnType("bit");
 
                     b.Property<long>("AziendaId")
                         .HasColumnType("bigint");
@@ -120,6 +196,28 @@ namespace logismartapi.Migrations
                     b.HasIndex("AziendaId");
 
                     b.ToTable("Operatori");
+                });
+
+            modelBuilder.Entity("logismart_api.Models.AreaMagazzino", b =>
+                {
+                    b.HasOne("logismart_api.Models.Magazzino", "Magazzino")
+                        .WithMany()
+                        .HasForeignKey("MagazzinoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Magazzino");
+                });
+
+            modelBuilder.Entity("logismart_api.Models.Azienda", b =>
+                {
+                    b.HasOne("logismart_api.Models.Magazzino", "Magazzino")
+                        .WithMany()
+                        .HasForeignKey("MagazzinoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Magazzino");
                 });
 
             modelBuilder.Entity("logismart_api.Models.Operatore", b =>

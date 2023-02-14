@@ -13,7 +13,10 @@ namespace logismart_api.Models
         public long Id { get; set; }
 
         public long AziendaId { get; set; }
+
         public Azienda Azienda { get; set; }
+
+
 
         [Required]
         public string Nome { get; set; }
@@ -47,6 +50,8 @@ namespace logismart_api.Models
         public string Pec { get; set; }
 
         [Required]
+        public bool Attivo { get; set; }
+
         public string CodiceOperatore { get; set; }
     }
 }

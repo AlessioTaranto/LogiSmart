@@ -10,9 +10,9 @@ namespace logismart_api.Controllers
     [ApiController]
     public class OperatoriController : ControllerBase
     {
-        private readonly MagazzinoContext magazzinoContext;
+        private readonly MagazziniContext magazzinoContext;
 
-        public OperatoriController(MagazzinoContext context) 
+        public OperatoriController(MagazziniContext context) 
         {
             magazzinoContext = context;
         }

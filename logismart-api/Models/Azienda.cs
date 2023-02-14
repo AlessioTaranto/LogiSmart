@@ -12,6 +12,9 @@ namespace logismart_api.Models
     {
         public long Id { get; set; }
 
+        public long MagazzinoId { get; set; }
+        public Magazzino Magazzino { get; set; }
+
         [Required]
         public string Nome { get; set; }
 
@@ -37,5 +40,8 @@ namespace logismart_api.Models
         public string? CodiceUnivoco { get; set; }
 
         public string? Pec { get; set; }
+
+        [Required]
+        public bool Attivo { get; set; }
     }
 }

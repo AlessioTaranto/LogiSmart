@@ -10,14 +10,15 @@ namespace logismart_api.Controllers
     [ApiController]
     public class AziendeController : ControllerBase
     {
-        private readonly MagazzinoContext magazzinoContext;
+        private readonly MagazziniContext magazzinoContext;
 
-        public AziendeController(MagazzinoContext magazzinoContext)
+        public AziendeController(MagazziniContext magazzinoContext)
         {
             this.magazzinoContext = magazzinoContext;
         }
 
         [HttpPost]
+        [Route("InsertAzienda")]
         public IActionResult InsertAzienda(Azienda azienda)
         {
             if (ModelState.IsValid)

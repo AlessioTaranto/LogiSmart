@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<MagazzinoContext>();
+builder.Services.AddDbContext<MagazziniContext>();
 
 WebApplication app = builder.Build();
 

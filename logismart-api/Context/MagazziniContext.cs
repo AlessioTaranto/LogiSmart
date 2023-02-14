@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace logismart_api.Context
 {
-    public class MagazzinoContext : DbContext
+    public class MagazziniContext : DbContext
     {
-        public MagazzinoContext(DbContextOptions<MagazzinoContext> options) 
+        public MagazziniContext(DbContextOptions<MagazziniContext> options) 
             : base(options) 
         {
 
@@ -23,14 +23,13 @@ namespace logismart_api.Context
             optionsBuilder.UseSqlServer("Server=localhost;Database=logismart;Trusted_Connection=True;TrustServerCertificate=true;");
         }
 
+
+        public DbSet<Magazzino> Magazzini { get; set; }
+
+        public DbSet<AreaMagazzino> AreeMagazzino { get; set; }
+
         public DbSet<Azienda> Aziende { get; set; }
 
         public DbSet<Operatore> Operatori { get; set; }
-
-        //public DbSet<AreaMagazzino> AreeMagazzino { get; set; }
-
-        //public DbSet<AttrezzaturaDiLavoro> AttrezzatureDiLavoro { get; set; }
-
-        //public DbSet<Mansione> Mansioni { get; set; }
     }
 }
