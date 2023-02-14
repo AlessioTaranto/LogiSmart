@@ -12,8 +12,16 @@ namespace logismart_api.Models
 
         public AreaMagazzino AreaMagazzino { get; set; }
 
-        public string NomeMansione { get; set; }
+        public List<Operatore> Operatori { get; set; }
 
-        public DateTime DataCreazione { get; set; }
+        public List<AttrezzaturaDiLavoro> Attrezzature { get; set; }
+
+        public DateTime? DataInizio { get; set; }
+
+        public DateTime? DataFine { get; set; }
+
+        public DateTime? DataInizioPrevisto { get; set; }
+
+        public DateTime? DataFinePrevisto { get; set; }
     }
 }
