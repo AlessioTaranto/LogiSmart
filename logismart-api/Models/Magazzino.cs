@@ -1,22 +1,30 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace logismart_api.Models
+namespace LogiSmart.Api.Models
 {
     public class Magazzino
     {
         public long Id { get; set; }
 
         [Required]
-        public string Nome { get; set; }
+        public required string Nome { get; set; }
 
         [Required]
-        public string Indirizzo { get; set; }
+        public required string Indirizzo { get; set; }
 
         [Required]
-        public string NumeroTelefono { get; set; }
+        public required string NumeroTelefono { get; set; }
 
         [Required]
-        public string Mail { get; set; }
+        public required string Mail { get; set; }
+
+        public required List<Mansione> Mansioni { get; set; }
+
+        public required List<Azienda> Azienda { get; set; }
+
+        public required List<AreaMagazzino> AreaMagazzino { get; set; }
+
+        public required List<Operatore> Operatori { get; set; }
     }
 }

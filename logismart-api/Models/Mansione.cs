@@ -1,20 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace logismart_api.Models
+namespace LogiSmart.Api.Models
 {
     public class Mansione
     {
         public long Id { get; set; }
 
-        public AreaMagazzino AreaMagazzino { get; set; }
 
-        public List<Operatore> Operatori { get; set; }
+        public long AreaMagazzinoId { get; set; }
+        public required AreaMagazzino AreaMagazzino { get; set; }
 
-        public List<AttrezzaturaDiLavoro> Attrezzature { get; set; }
+        [Required]
+        public required string Nome { get; set; }
+
+        public string? Descrizione { get; set; }
+
+        public required List<Attrezzatura> Attrezzature { get; set; }
+
+        public required List<Operatore> Operatori { get; set; }
 
         public DateTime? DataInizio { get; set; }
 

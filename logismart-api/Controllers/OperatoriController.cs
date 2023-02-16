@@ -1,10 +1,10 @@
-﻿using logismart_api.Context;
-using logismart_api.Models;
+﻿using LogiSmart.Api.Context;
+using LogiSmart.Api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace logismart_api.Controllers
+namespace LogiSmart.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]

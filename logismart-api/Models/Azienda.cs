@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace logismart_api.Models
+namespace LogiSmart.Api.Models
 {
     // TODO pattern validation
     public class Azienda
@@ -13,31 +13,28 @@ namespace logismart_api.Models
         public long Id { get; set; }
 
         public long MagazzinoId { get; set; }
-        public Magazzino Magazzino { get; set; }
+        public required Magazzino Magazzino { get; set; }
 
         [Required]
-        public string Nome { get; set; }
+        public required string Nome { get; set; }
 
         [Required]
-        public string Indirizzo { get; set; }
+        public required string Indirizzo { get; set; }
 
         [Required]
-        //[RegularExpression("[789][0-9]{9}")]
-        public string NumeroContatto { get; set; }
+        public required string NumeroContatto { get; set; }
 
         [Required]
-        //[RegularExpression("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]
-        public string Mail { get; set; }
+        public required string Mail { get; set; }
 
-        // TODO validazione partita iva estera
         [Required]
         [MinLength(11)]
         [MaxLength(11)]
-        public string PartitaIva { get; set; }
+        public required string PartitaIva { get; set; }
 
         [MinLength(7)]
         [MaxLength(7)]
-        public string? CodiceUnivoco { get; set; }
+        public required string? CodiceUnivoco { get; set; }
 
         public string? Pec { get; set; }
 

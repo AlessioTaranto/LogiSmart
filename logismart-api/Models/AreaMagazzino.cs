@@ -5,17 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace logismart_api.Models
+namespace LogiSmart.Api.Models
 {
     public class AreaMagazzino
     {
         public long Id { get; set; }
 
+        [Required]
         public long MagazzinoId { get; set; }
-        public Magazzino Magazzino { get; set; }
+        public required Magazzino Magazzino { get; set; }
+
+        public List<Mansione> Mansioni { get; set; }
 
         [Required]
-        public string Nome { get; set; }
+        public required string Nome { get; set; }
 
         public string? Descrizione { get; set; }
 
@@ -23,9 +26,9 @@ namespace logismart_api.Models
         public bool Attivo { get; set; }
 
         [Required]
-        public string NumeroContatto { get; set; }
+        public required string NumeroContatto { get; set; }
 
         [Required]
-        public string Mail { get; set; }
+        public required string Mail { get; set; }
     }
 }

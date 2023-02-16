@@ -5,19 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace logismart_api.Models
+namespace LogiSmart.Api.Models
 {
-    public class AttrezzaturaDiLavoro
+    public class Attrezzatura
     {
         public long Id { get; set; }
-
-        public AreaMagazzino AreaMagazzino { get; set; }
-
-        public Operatore Operatore { get; set; }
 
         public bool Attivo { get; set; }
 
         [Required]
-        public string NomeAttrezzatura { get; set; }
+        public required string NomeAttrezzatura { get; set; }
+
+        public long? MansioneId { get; set; }
+        public Mansione? Mansione { get; set;}
     }
 }

@@ -1,4 +1,4 @@
-﻿using logismart_api.Models;
+﻿using LogiSmart.Api.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace logismart_api.Context
+namespace LogiSmart.Api.Context
 {
     public class MagazziniContext : DbContext
     {
@@ -28,8 +28,12 @@ namespace logismart_api.Context
 
         public DbSet<AreaMagazzino> AreeMagazzino { get; set; }
 
+        public DbSet<Attrezzatura> Attrezzature { get; set; }
+
         public DbSet<Azienda> Aziende { get; set; }
 
         public DbSet<Operatore> Operatori { get; set; }
+
+        public DbSet<Mansione> Mansioni { get; set; }
     }
 }

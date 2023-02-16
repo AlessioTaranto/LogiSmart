@@ -5,21 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace logismart_api.Models
+namespace LogiSmart.Api.Models
 {
     // TODO pattern validation
     public class Operatore
     {
         public long Id { get; set; }
 
+
         public long AziendaId { get; set; }
 
-        public Azienda Azienda { get; set; }
+        public required Azienda Azienda { get; set; }
 
+        public long? MansioneId { get; set; }
+        public Mansione? Mansione { get; set; }
 
 
         [Required]
-        public string Nome { get; set; }
+        public required string Nome { get; set; }
 
         public DateTime DataDiNascita { get; set; }
 
@@ -32,26 +35,26 @@ namespace logismart_api.Models
         }
 
         [Required]
-        public string LuogoDiNascita { get; set; }
+        public required string LuogoDiNascita { get; set; }
 
         [Required]
-        public string IndirizzoDiDomicilio { get; set; }
+        public required string IndirizzoDiDomicilio { get; set; }
 
         [Required]
-        public string CodiceFiscale { get; set; }
+        public required string CodiceFiscale { get; set; }
 
         [Required]
-        public string NumeroContatto { get; set; }
+        public required string NumeroContatto { get; set; }
 
         [Required]
-        public string Mail { get; set; }
+        public required string Mail { get; set; }
 
         [Required]
-        public string Pec { get; set; }
+        public required string Pec { get; set; }
 
         [Required]
-        public bool Attivo { get; set; }
+        public required bool Attivo { get; set; }
 
-        public string CodiceOperatore { get; set; }
+        public string? CodiceOperatore { get; set; }
     }
 }

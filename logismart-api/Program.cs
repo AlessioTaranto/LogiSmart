@@ -1,4 +1,4 @@
-using logismart_api.Context;
+using LogiSmart.Api.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
