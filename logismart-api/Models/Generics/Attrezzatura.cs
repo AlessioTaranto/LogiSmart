@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LogiSmart.Api.Models
+namespace LogiSmart.Api.Models.Generics
 {
     public class Attrezzatura
     {
@@ -17,6 +17,6 @@ namespace LogiSmart.Api.Models
         public required string NomeAttrezzatura { get; set; }
 
         public long? MansioneId { get; set; }
-        public Mansione? Mansione { get; set;}
+        public Mansione? Mansione { get; set; }
     }
 }

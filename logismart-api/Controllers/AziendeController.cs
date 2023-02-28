@@ -1,5 +1,5 @@
 ﻿using LogiSmart.Api.Context;
-using LogiSmart.Api.Models;
+using LogiSmart.Api.Models.Generics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;

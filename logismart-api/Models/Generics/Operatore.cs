@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LogiSmart.Api.Models
+namespace LogiSmart.Api.Models.Generics
 {
     // TODO pattern validation
     public class Operatore

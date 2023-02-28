@@ -1,5 +1,6 @@
 ﻿using LogiSmart.Api.Context;
-using LogiSmart.Api.Models;
+using LogiSmart.Api.Models.Dto;
+using LogiSmart.Api.Models.Generics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -20,10 +21,12 @@ namespace LogiSmart.Api.Controllers
 
         [HttpPost]
         [Route("InsertMagazzino")]
-        public IActionResult InsertMagazzino(Magazzino magazzino)
+        public IActionResult InsertMagazzino([FromBody] MagazzinoDto magazzinoDto)
         {
             if (ModelState.IsValid)
             {
+                Magazzino magazzino = magazzinoDto.ToDbEntity();
+
                 magazzinoContext.Magazzini.RemoveRange(magazzinoContext.Magazzini);
                 magazzinoContext.Magazzini.Add(magazzino);
                 magazzinoContext.SaveChanges();
@@ -42,5 +45,10 @@ namespace LogiSmart.Api.Controllers
         [Route("GetMagazzino")]
         public IActionResult GetMagazzino()
             => Ok(magazzinoContext.Magazzini.FirstOrDefault());
+
+        [HttpGet]
+        [Route("IsMagazzinoRegistered")]
+        public IActionResult IsMagazzinoRegistered() 
+            => Ok(magazzinoContext.Magazzini.Any());
     }
 }

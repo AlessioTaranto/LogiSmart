@@ -1,4 +1,4 @@
-﻿using LogiSmart.Api.Models;
+﻿using LogiSmart.Api.Models.Generics;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
