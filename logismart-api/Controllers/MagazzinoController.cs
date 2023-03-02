@@ -47,6 +47,11 @@ namespace LogiSmart.Api.Controllers
             => Ok(magazzinoContext.Magazzini.FirstOrDefault());
 
         [HttpGet]
+        [Route("GetMailMagazzino")]
+        public IActionResult GetMailMagazzino()
+            => Ok(magazzinoContext.Magazzini.FirstOrDefault()?.Mail);
+
+        [HttpGet]
         [Route("IsMagazzinoRegistered")]
         public IActionResult IsMagazzinoRegistered() 
             => Ok(magazzinoContext.Magazzini.Any());
