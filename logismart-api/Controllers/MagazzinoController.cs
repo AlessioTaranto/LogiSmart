@@ -55,5 +55,10 @@ namespace LogiSmart.Api.Controllers
         [Route("IsMagazzinoRegistered")]
         public IActionResult IsMagazzinoRegistered() 
             => Ok(magazzinoContext.Magazzini.Any());
+
+        [HttpGet]
+        [Route("CheckMagazzinoMailMatch")]
+        public IActionResult CheckMagazzinoMailMatch(string mail) 
+            => Ok(magazzinoContext.Magazzini.Any(m => m.Mail == mail));
     }
 }
