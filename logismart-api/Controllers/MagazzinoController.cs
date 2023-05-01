@@ -1,27 +1,64 @@
-﻿using logismart_api.Context;
+﻿using LogiSmart.Api.Context;
+using LogiSmart.Api.Models.Dto;
+using LogiSmart.Api.Models.Generics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 
-namespace logismart_api.Controllers
+namespace LogiSmart.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
     public class MagazzinoController : ControllerBase
     {
-        private readonly MagazzinoContext _context;
+        private MagazziniContext magazzinoContext;
 
-       
-        public MagazzinoController(MagazzinoContext context)
+        public MagazzinoController(MagazziniContext ctx) 
         {
-            _context = context;
+            magazzinoContext = ctx;
+        }
+
+        [HttpPost]
+        [Route("InsertMagazzino")]
+        public IActionResult InsertMagazzino([FromBody] MagazzinoDto magazzinoDto)
+        {
+            if (ModelState.IsValid)
+            {
+                Magazzino magazzino = magazzinoDto.ToDbEntity();
+
+                magazzinoContext.Magazzini.RemoveRange(magazzinoContext.Magazzini);
+                magazzinoContext.Magazzini.Add(magazzino);
+                magazzinoContext.SaveChanges();
+
+                return Ok(magazzino);
+            }
+
+            IEnumerable<ModelError> allErrors = ModelState
+                .Values
+                .SelectMany(v => v.Errors);
+
+            return BadRequest(allErrors.ToString());
         }
 
         [HttpGet]
-        public IActionResult TestChiamata()
-        {
-            _context.Attivita.Add(new Models.Attivita());
-            return Ok(_context.Attivita.Count());
-        }
+        [Route("GetMagazzino")]
+        public IActionResult GetMagazzino()
+            => Ok(magazzinoContext.Magazzini.FirstOrDefault());
+
+        [HttpGet]
+        [Route("GetMailMagazzino")]
+        public IActionResult GetMailMagazzino()
+            => Ok(magazzinoContext.Magazzini.FirstOrDefault()?.Mail);
+
+        [HttpGet]
+        [Route("IsMagazzinoRegistered")]
+        public IActionResult IsMagazzinoRegistered() 
+            => Ok(magazzinoContext.Magazzini.Any());
+
+        [HttpGet]
+        [Route("CheckMagazzinoMailMatch")]
+        public IActionResult CheckMagazzinoMailMatch(string mail) 
+            => Ok(magazzinoContext.Magazzini.Any(m => m.Mail == mail));
     }
 }
