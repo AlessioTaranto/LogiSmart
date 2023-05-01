@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace LogiSmart.Api.Models.Generics
 {
+    // TODO remove required and use constuctor
     public class Magazzino
     {
         public long Id { get; set; }

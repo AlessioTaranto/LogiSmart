@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace LogiSmart.Api.Models.Generics
 {
     // TODO pattern validation
+    // TODO CLeanup
     public class Operatore
     {
         public long Id { get; set; }
